@@ -55,4 +55,3 @@ jobs:
         MERGE_FORKS: "false"
         UPDATE_LABELS: "automerge"
         UPDATE_METHOD: "merge"
-
