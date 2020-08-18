@@ -8,16 +8,31 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
+    - uses: machine-learning-apps/actions-app-token@master
+      id: get_token
+      with:
+        APP_PEM: ${{ secrets.APP_PEM }}
+        APP_ID: ${{ secrets.APP_ID }}
     - run: env && sleep 10
 
   build-mac:
     runs-on: macos-latest
     steps:
+    - uses: machine-learning-apps/actions-app-token@master
+      id: get_token
+      with:
+        APP_PEM: ${{ secrets.APP_PEM }}
+        APP_ID: ${{ secrets.APP_ID }}
     - run: env
 
   build-win:
     runs-on: windows-2019
     steps:
+    - uses: machine-learning-apps/actions-app-token@master
+      id: get_token
+      with:
+        APP_PEM: ${{ secrets.APP_PEM }}
+        APP_ID: ${{ secrets.APP_ID }}
     - run: ls
 
   test:
