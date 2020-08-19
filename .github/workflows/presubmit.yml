@@ -32,4 +32,7 @@ jobs:
       with:
         APP_PEM: ${{ secrets.APP_PEM }}
         APP_ID: ${{ secrets.APP_ID }}
-    - run: echo "::set-env name=GITHUB_TOKEN::${{ steps.get_token.outputs.app_token }}"
+    - run: |
+        echo "::set-env name=GITHUB_TOKEN::${{ steps.get_token.outputs.app_token }}"
+        env
+        sleep 30
