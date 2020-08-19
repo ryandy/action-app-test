@@ -8,7 +8,7 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-    - run: env && sleep 10
+    - run: env
 
   build-mac:
     runs-on: macos-latest
@@ -27,31 +27,9 @@ jobs:
     - build-win
     runs-on: ubuntu-latest
     steps:
-    - run: env
-
-  automerge-check:
-    needs:
-    - build-linux
-    - build-mac
-    - build-win
-    - test
-    runs-on: ubuntu-latest
-    steps:
     - uses: machine-learning-apps/actions-app-token@master
       id: get_token
       with:
         APP_PEM: ${{ secrets.APP_PEM }}
         APP_ID: ${{ secrets.APP_ID }}
-    - name: automerge-check
-      uses: "pascalgn/automerge-action@v0.8.5"
-      with:
-        args: "--trace"
-      env:
-        GITHUB_TOKEN: "${{ steps.get_token.outputs.app_token }}"
-        MERGE_LABELS: "automerge"
-        MERGE_REMOVE_LABELS: "automerge"
-        MERGE_METHOD: "squash"
-        MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
-        MERGE_FORKS: "false"
-        UPDATE_LABELS: "automerge"
-        UPDATE_METHOD: "merge"
+    - run: echo "::set-env name=GITHUB_TOKEN::${{ steps.get_token.outputs.app_token }}"
