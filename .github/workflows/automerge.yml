@@ -18,6 +18,10 @@ on:
     types:
       - completed
   status: {}
+  workflow_run:
+    workflows: ["Presubmit"]
+    types:
+      - completed
 
 jobs:
   automerge-check:
