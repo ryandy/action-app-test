@@ -37,7 +37,7 @@ jobs:
     - test
     runs-on: ubuntu-latest
     steps:
-    - uses: ryandy/actions-github-app-token@master
+    - uses: ryandy/actions-github-app-token@main
       id: get_token
       with:
         GITHUB_APP_ID: ${{ secrets.APP_ID }}
