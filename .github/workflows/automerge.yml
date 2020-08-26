@@ -23,17 +23,17 @@ jobs:
   automerge-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: machine-learning-apps/actions-app-token@master
+    - uses: ryandy/actions-github-app-token@main
       id: get_token
       with:
-        APP_PEM: ${{ secrets.APP_PEM }}
-        APP_ID: ${{ secrets.APP_ID }}
+        GITHUB_APP_ID: ${{ secrets.APP_ID }}
+        GITHUB_APP_PEM: ${{ secrets.APP_PEM }}
     - name: automerge-check
       uses: "pascalgn/automerge-action@v0.8.5"
       with:
         args: "--trace"
       env:
-        GITHUB_TOKEN: "${{ steps.get_token.outputs.app_token }}"
+        GITHUB_TOKEN: "${{ steps.get_token.outputs.GITHUB_APP_TOKEN }}"
         MERGE_LABELS: "automerge"
         MERGE_REMOVE_LABELS: "automerge"
         MERGE_METHOD: "squash"
