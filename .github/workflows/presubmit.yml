@@ -35,7 +35,7 @@ jobs:
     - build-mac
     - build-win
     - test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: ryandy/actions-github-app-token@main
       id: get_token

@@ -21,7 +21,7 @@ on:
 
 jobs:
   automerge-check:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: ryandy/actions-github-app-token@main
       id: get_token
